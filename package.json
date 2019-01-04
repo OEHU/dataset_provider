@@ -1,0 +1,19 @@
+{
+  "name": "dataset_provider",
+  "version": "0.0.1",
+  "description": "Express application to query mongo instance of BDB node via POST req params and return downloadable dataset",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mx",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.0",
+    "nodemon": "^1.18.9",
+    "path": "^0.12.7",
+    "tunnel-ssh": "^4.1.4"
+  }
+}
