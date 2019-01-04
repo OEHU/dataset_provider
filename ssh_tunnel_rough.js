@@ -5,7 +5,7 @@ this is an example config some details will need changing
 var config = {
     username : 'root',
     host: '188.166.15.225',
-    privateKey:require('fs').readFileSync('id_rsa.ppk'),
+    privateKey:require('fs').readFileSync('id_rsa'),
     port:22,
     dstPort:27010,
     localPort: 2000
