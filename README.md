@@ -9,7 +9,8 @@ Early work - more TBA.
 2. Create `.env` file in root directory and set environment variables for: </br>
 ⋅ _PORT_ </br>
 ⋅ _WEBPORT_
-3. Make sure you're connected either to local MongoDB, or BigchainDB Mongo instance if you have access.
+3. Create `config.json` file in root directory and set connection string for Mongo instance for use in production. 
+4. Make sure you're connected either to local MongoDB, or BigchainDB Mongo instance if you have access.
 Create this cron on the server to automatically start a SSH tunnel to a bigchaindb node if you have access:
 ____
     crontab -e
