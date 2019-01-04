@@ -7,8 +7,8 @@ Early work - more TBA.
 ### Setup
 1. `npm install --save`. </br>
 2. Create `.env` file in root directory and set environment variables for: </br>
-⋅* _PORT_ </br>
-⋅* _WEBPORT_
+⋅_PORT_ </br>
+⋅_WEBPORT_
 </br>
 3. Make sure you're connected either to local MongoDB, or BigchainDB Mongo instance if you have access.
 Create this cron on the server to automatically start a SSH tunnel to a bigchaindb node if you have access:
