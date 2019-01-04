@@ -1,9 +1,10 @@
 const express = require("express"),
 	  app = express(),
-    mongoose = require('mongoose'),
     path = require('path'),
     env = require(path.resolve( __dirname, "./.env" )),
-		tunnel = require('tunnel-ssh');
+		tunnel = require('tunnel-ssh'),
+		assert = require('assert'),
+		MongoClient = require('mongodb').MongoClient;
 
 require ('dotenv').load()
 
@@ -11,26 +12,24 @@ var PORT = process.env.PORT;
 var WEBPORT = process.env.WEBPORT;
 
 /*
-change this to node instance once local is working < --- cf. './ssh_tunnel_rough.js'
-mongoose.connect('mongodb://root@188.166.15.225:27017/bigchain', { useNewUrlParser: true } );
+change this to rmeote instance once local is working < --- cf. './ssh_tunnel_rough.js'
 */
-mongoose.connect('mongodb://localhost/bigchain', {useNewUrlParser: true});
+const urlMongo = 'mongodb://localhost:27017'
+const dbName = 'bigchain'
 
-let db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log("connection to mongo open")
-});
+MongoClient.connect(urlMongo, function(err, client) {
+  assert.equal(null, err);
+  console.log("Connected successfully to mongodb instance")
+  const db = client.db(dbName);
+	console.log(db.databaseName);
+  // const collection = db.collection('assets');
+})
 
-/*
-check which db you're connected to and console log it
-*/
-
-require("./routes/test.js")(app)
+require("./routes/test.js")(app) // checks which db you're connected to and console log it
 // more routes in here
 
 /*
-CHANGE TO WEBPORT IN PRODUCTION
+change to 'WEBPORT' in production
 */
 app.listen(PORT, () => {
   console.log(`express listening on port ${PORT}`)
